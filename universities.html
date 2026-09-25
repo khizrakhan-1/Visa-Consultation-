@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Find Universities Abroad | Visa Klub</title>
+  <meta name="description" content="Find the right university abroad. Filter by country, degree level, field of study, tuition fee, and scholarship availability.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300..700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="page-loader" id="pageLoader">
+    <div class="loader-content">
+      <div class="loader-logo"><i class="fas fa-graduation-cap"></i> VISA KLUB</div>
+      <div class="loader-line"><span></span></div>
+    </div>
+  </div>
+
+  <header class="header" id="header">
+    <div class="nav-bar">
+      <a href="index.html" class="logo"><i class="fas fa-graduation-cap"></i> VISA KLUB</a>
+      <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li class="has-dropdown">
+          <a href="destinations/uk.html" class="nav-link">Study Destinations <i class="fas fa-chevron-down"></i></a>
+          <div class="dropdown-content">
+            <a href="destinations/uk.html">🇬🇧 United Kingdom</a>
+            <a href="destinations/usa.html">🇺🇸 United States</a>
+            <a href="destinations/australia.html">🇦🇺 Australia</a>
+            <a href="destinations/china.html">🇨🇳 China</a>
+            <a href="destinations/romania.html">🇷🇴 Romania</a>
+            <a href="destinations/georgia.html">🇬🇪 Georgia</a>
+            <a href="destinations/cyprus.html">🇨🇾 Cyprus</a>
+          </div>
+        </li>
+        <li><a href="universities.html" class="nav-link active">Universities</a></li>
+        <li class="has-dropdown">
+          <a href="courses.html" class="nav-link">Courses <i class="fas fa-chevron-down"></i></a>
+          <div class="dropdown-content">
+            <a href="courses-ielts.html">IELTS Preparation</a>
+            <a href="courses-pte.html">PTE Preparation</a>
+            <a href="courses.html#online">Online Classes</a>
+            <a href="courses.html#on-campus">On-Campus Classes</a>
+          </div>
+        </li>
+        <li><a href="services.html" class="nav-link">Services</a></li>
+        <li><a href="scholarships.html" class="nav-link">Scholarships</a></li>
+        <li><a href="about.html" class="nav-link">About Us</a></li>
+        <li><a href="success-stories.html" class="nav-link">Success Stories</a></li>
+        <li><a href="blog.html" class="nav-link">Blog</a></li>
+        <li><a href="contact.html" class="nav-link">Contact</a></li>
+      </ul>
+      <div class="header-cta">
+        <a href="consultation.html" class="btn btn-primary btn-arrow">Book Free Consultation <i class="fas fa-arrow-right"></i></a>
+      </div>
+    </div>
+  </header>
+
+  <section class="page-hero">
+    <div class="container">
+      <div class="page-hero-content reveal-up">
+        <!-- <div class="breadcrumb">
+          <a href="index.html">Home</a> <i class="fas fa-chevron-right"></i> <span>Universities</span>
+        </div> -->
+        <h1>Find the Right University for You</h1>
+        <p>Search from 100+ university options across 7 countries. Filter by degree, field of study, tuition fee, and scholarship availability.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <!-- Filter Bar -->
+      <div class="filter-bar reveal-up">
+        <div class="filter-group">
+          <label>Country</label>
+          <select id="filterCountry">
+            <option value="">All Countries</option>
+            <option>UK</option>
+            <option>USA</option>
+            <option>Australia</option>
+            <option>China</option>
+            <option>Romania</option>
+            <option>Georgia</option>
+            <option>Cyprus</option>
+          </select>
+        </div>
+        <div class="filter-group">
+          <label>Degree Level</label>
+          <select id="filterDegree">
+            <option value="">All Levels</option>
+            <option>Bachelor's</option>
+            <option>Master's</option>
+            <option>PhD</option>
+          </select>
+        </div>
+        <div class="filter-group">
+          <label>Field of Study</label>
+          <select id="filterField">
+            <option value="">All Fields</option>
+            <option>Computer Science</option>
+            <option>Business</option>
+            <option>Engineering</option>
+            <option>Healthcare</option>
+            <option>Data Science</option>
+          </select>
+        </div>
+        <div class="filter-group">
+          <label>Intake</label>
+          <select id="filterIntake">
+            <option value="">All Intakes</option>
+            <option>Fall 2026</option>
+            <option>Spring 2027</option>
+            <option>Fall 2027</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- University Grid -->
+      <div class="university-grid stagger-grid" id="universityGrid">
+        <div class="university-card" data-country="UK" data-degree="Master's" data-field="Computer Science">
+          <div class="university-img-wrap"><img src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?q=80&w=1470&auto=format&fit=crop" alt="University of Oxford"></div>
+          <div class="university-content">
+            <div class="uni-country">🇬🇧 United Kingdom</div>
+            <h3>University of Oxford</h3>
+            <p>One of the world's oldest and most prestigious universities.</p>
+            <div class="uni-meta"><span>Master's</span><span>Computer Science</span><span>Scholarships</span></div>
+            <a href="consultation.html" class="btn btn-outline btn-arrow">View Details <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+        <div class="university-card" data-country="USA" data-degree="Master's" data-field="Engineering">
+          <div class="university-img-wrap"><img src="https://images.unsplash.com/photo-1562774053-701939374585?q=80&w=1470&auto=format&fit=crop" alt="MIT"></div>
+          <div class="university-content">
+            <div class="uni-country">🇺🇸 United States</div>
+            <h3>Massachusetts Institute of Technology</h3>
+            <p>Leading research university in science and technology.</p>
+            <div class="uni-meta"><span>Master's</span><span>Engineering</span><span>Scholarships</span></div>
+            <a href="consultation.html" class="btn btn-outline btn-arrow">View Details <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+        <div class="university-card" data-country="Australia" data-degree="Bachelor's" data-field="Business">
+          <div class="university-img-wrap"><img src="https://images.unsplash.com/photo-1523482580672-f109ba8cb9be?q=80&w=1470&auto=format&fit=crop" alt="University of Melbourne"></div>
+          <div class="university-content">
+            <div class="uni-country">🇦🇺 Australia</div>
+            <h3>University of Melbourne</h3>
+            <p>Australia's leading university with a strong global reputation.</p>
+            <div class="uni-meta"><span>Bachelor's</span><span>Business</span><span>Scholarships</span></div>
+            <a href="consultation.html" class="btn btn-outline btn-arrow">View Details <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+        <div class="university-card" data-country="China" data-degree="Master's" data-field="Data Science">
+          <div class="university-img-wrap"><img src="https://images.unsplash.com/photo-1508804185872-d7badad00f7d?q=80&w=1470&auto=format&fit=crop" alt="Tsinghua University"></div>
+          <div class="university-content">
+            <div class="uni-country">🇨🇳 China</div>
+            <h3>Tsinghua University</h3>
+            <p>Top-ranked Chinese university known for engineering and technology.</p>
+            <div class="uni-meta"><span>Master's</span><span>Data Science</span><span>Scholarships</span></div>
+            <a href="consultation.html" class="btn btn-outline btn-arrow">View Details <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+        <div class="university-card" data-country="Romania" data-degree="Bachelor's" data-field="Healthcare">
+          <div class="university-img-wrap"><img src="https://images.unsplash.com/photo-1584646098378-0874589d76b1?q=80&w=1470&auto=format&fit=crop" alt="University of Bucharest"></div>
+          <div class="university-content">
+            <div class="uni-country">🇷🇴 Romania</div>
+            <h3>University of Bucharest</h3>
+            <p>Prestigious Romanian university offering affordable European education.</p>
+            <div class="uni-meta"><span>Bachelor's</span><span>Healthcare</span><span>Scholarships</span></div>
+            <a href="consultation.html" class="btn btn-outline btn-arrow">View Details <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+        <div class="university-card" data-country="Georgia" data-degree="Master's" data-field="Business">
+          <div class="university-img-wrap"><img src="https://images.unsplash.com/photo-1565008576549-57569a49371d?q=80&w=1470&auto=format&fit=crop" alt="Tbilisi State University"></div>
+          <div class="university-content">
+            <div class="uni-country">🇬🇪 Georgia</div>
+            <h3>Tbilisi State University</h3>
+            <p>Leading Georgian university with English-taught programs.</p>
+            <div class="uni-meta"><span>Master's</span><span>Business</span><span>Scholarships</span></div>
+            <a href="consultation.html" class="btn btn-outline btn-arrow">View Details <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+        <div class="university-card" data-country="Cyprus" data-degree="Bachelor's" data-field="Computer Science">
+          <div class="university-img-wrap"><img src="https://images.unsplash.com/photo-1523805009345-7448845a9e53?q=80&w=1470&auto=format&fit=crop" alt="University of Cyprus"></div>
+          <div class="university-content">
+            <div class="uni-country">🇨🇾 Cyprus</div>
+            <h3>University of Cyprus</h3>
+            <p>Modern university offering English-taught programs in a European setting.</p>
+            <div class="uni-meta"><span>Bachelor's</span><span>Computer Science</span><span>Scholarships</span></div>
+            <a href="consultation.html" class="btn btn-outline btn-arrow">View Details <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+        <div class="university-card" data-country="UK" data-degree="Bachelor's" data-field="Business">
+          <div class="university-img-wrap"><img src="https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?q=80&w=1470&auto=format&fit=crop" alt="University of Manchester"></div>
+          <div class="university-content">
+            <div class="uni-country">🇬🇧 United Kingdom</div>
+            <h3>University of Manchester</h3>
+            <p>World-renowned university with strong business and research programs.</p>
+            <div class="uni-meta"><span>Bachelor's</span><span>Business</span><span>Scholarships</span></div>
+            <a href="consultation.html" class="btn btn-outline btn-arrow">View Details <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+        <div class="university-card" data-country="USA" data-degree="PhD" data-field="Data Science">
+          <div class="university-img-wrap"><img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=1470&auto=format&fit=crop" alt="Stanford University"></div>
+          <div class="university-content">
+            <div class="uni-country">🇺🇸 United States</div>
+            <h3>Stanford University</h3>
+            <p>Leading research university in technology, innovation, and data science.</p>
+            <div class="uni-meta"><span>PhD</span><span>Data Science</span><span>Scholarships</span></div>
+            <a href="consultation.html" class="btn btn-outline btn-arrow">View Details <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <p class="text-center reveal-up" style="margin-top: 48px; color: #5a6a7a;">
+        <strong>Can't find the right university?</strong> <a href="consultation.html" style="color: var(--accent); font-weight: 600;">Talk to our counselor →</a>
+      </p>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col"><h4>Visa Klub</h4><p>Guiding Pakistani students toward global education opportunities.</p></div>
+        <div class="footer-col"><h4>Study Destinations</h4><ul>
+          <li><a href="destinations/uk.html">United Kingdom</a></li>
+          <li><a href="destinations/usa.html">United States</a></li>
+          <li><a href="destinations/australia.html">Australia</a></li>
+          <li><a href="destinations/china.html">China</a></li>
+          <li><a href="destinations/romania.html">Romania</a></li>
+          <li><a href="destinations/georgia.html">Georgia</a></li>
+          <li><a href="destinations/cyprus.html">Cyprus</a></li>
+        </ul></div>
+        <div class="footer-col"><h4>Services</h4><ul>
+          <li><a href="services.html">Counseling</a></li>
+          <li><a href="services.html">University Admission</a></li>
+          <li><a href="scholarships.html">Scholarships</a></li>
+          <li><a href="services.html">Visa Assistance</a></li>
+        </ul></div>
+        <div class="footer-col"><h4>Company</h4><ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="success-stories.html">Success Stories</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul></div>
+        <div class="footer-col"><h4>Contact</h4><ul class="footer-contact">
+          <li><i class="fas fa-phone"></i> +92 42 1234567</li>
+          <li><i class="fab fa-whatsapp"></i> +92 300 1234567</li>
+          <li><i class="fas fa-envelope"></i> info@visaklub.com</li>
+        </ul></div>
+      </div>
+      <div class="disclaimer-box">
+        <strong>Disclaimer:</strong> Visa Klub provides education counseling, university application assistance, and visa application guidance. Admission and visa decisions are made solely by the respective universities and immigration authorities.
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Visa Klub. All Rights Reserved.</span>
+        <div class="footer-links">
+          <!-- <a href="#">Privacy Policy</a><a href="#">Terms & Conditions</a><a href="#">Cookie Policy</a><a href="#">Disclaimer</a> -->
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <a href="https://wa.me/923001234567?text=Hello%20Visa%20Klub%2C%20I%20would%20like%20help%20finding%20a%20university." class="whatsapp-float" target="_blank" rel="noopener">
+    <i class="fab fa-whatsapp"></i><span>Chat with a Counselor</span>
+  </a>
+  <button class="scroll-top" id="scrollTop" aria-label="Scroll to top"><i class="fas fa-arrow-up"></i></button>
+
+  <script src="script.js"></script>
+  <script>
+    // University filter
+    document.addEventListener('DOMContentLoaded', () => {
+      const filterCountry = document.getElementById('filterCountry');
+      const filterDegree = document.getElementById('filterDegree');
+      const filterField = document.getElementById('filterField');
+      const cards = document.querySelectorAll('.university-card');
+
+      function applyFilters() {
+        const country = filterCountry.value;
+        const degree = filterDegree.value;
+        const field = filterField.value;
+
+        cards.forEach((card) => {
+          const matchCountry = !country || card.dataset.country === country;
+          const matchDegree = !degree || card.dataset.degree === degree;
+          const matchField = !field || card.dataset.field === field;
+          if (matchCountry && matchDegree && matchField) {
+            card.style.display = '';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      }
+
+      filterCountry.addEventListener('change', applyFilters);
+      filterDegree.addEventListener('change', applyFilters);
+      filterField.addEventListener('change', applyFilters);
+    });
+  </script>
+</body>
+</html>
