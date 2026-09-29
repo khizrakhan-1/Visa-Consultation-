@@ -30,32 +30,76 @@
     updateHeader();
   
     /* ===== MOBILE MENU ===== */
+    /* ===== MOBILE MENU (Enhanced) ===== */
     const hamburger = document.getElementById('hamburger');
     const navLinks = document.getElementById('navLinks');
+  
     if (hamburger && navLinks) {
+      // Create backdrop overlay dynamically
+      let navOverlay = document.querySelector('.nav-overlay');
+      if (!navOverlay) {
+        navOverlay = document.createElement('div');
+        navOverlay.className = 'nav-overlay';
+        document.body.appendChild(navOverlay);
+      }
+  
+      const openMenu = () => {
+        hamburger.classList.add('active');
+        navLinks.classList.add('active');
+        navOverlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      };
+  
+      const closeMenu = () => {
+        hamburger.classList.remove('active');
+        navLinks.classList.remove('active');
+        navOverlay.classList.remove('active');
+        document.body.style.overflow = '';
+      };
+  
+      // Toggle
       hamburger.addEventListener('click', () => {
-        hamburger.classList.toggle('active');
-        navLinks.classList.toggle('active');
+        if (navLinks.classList.contains('active')) closeMenu();
+        else openMenu();
       });
+  
+      // Close on overlay tap
+      navOverlay.addEventListener('click', closeMenu);
+  
+      // Dropdown accordion (mobile only)
       document.querySelectorAll('.has-dropdown > .nav-link').forEach((link) => {
         link.addEventListener('click', (e) => {
           if (window.innerWidth <= 900) {
             e.preventDefault();
+            // Close other open dropdowns
+            document.querySelectorAll('.has-dropdown').forEach((dd) => {
+              if (dd !== link.parentElement) dd.classList.remove('open');
+            });
             link.parentElement.classList.toggle('open');
           }
         });
       });
+  
+      // Close menu when a real link is clicked
       navLinks.querySelectorAll('a:not(.has-dropdown > .nav-link)').forEach((link) => {
         link.addEventListener('click', () => {
-          hamburger.classList.remove('active');
-          navLinks.classList.remove('active');
+          closeMenu();
         });
       });
-      document.addEventListener('click', (e) => {
-        if (navLinks.classList.contains('active') &&
-            !navLinks.contains(e.target) && !hamburger.contains(e.target)) {
-          hamburger.classList.remove('active');
-          navLinks.classList.remove('active');
+  
+      // Close menu when resizing to desktop
+      let resizeTimer;
+      window.addEventListener('resize', () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(() => {
+          if (window.innerWidth > 900) closeMenu();
+        }, 150);
+      });
+  
+      // Escape key closes menu
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && navLinks.classList.contains('active')) {
+          closeMenu();
         }
       });
     }
@@ -387,3 +431,16 @@
       if (filterField) filterField.addEventListener('change', applyFilters);
     }
   })();
+
+  /* ===== HIDE WHATSAPP FLOAT WHEN CHAT OPEN ===== */
+const observer = new MutationObserver(() => {
+  const chatWindow = document.querySelector(".chat-window");
+  const whatsappFloat = document.querySelector(".whatsapp-float");
+  if (chatWindow && whatsappFloat) {
+    const isOpen = chatWindow.classList.contains("open");
+    whatsappFloat.style.opacity = isOpen ? "0" : "1";
+    whatsappFloat.style.pointerEvents = isOpen ? "none" : "auto";
+    whatsappFloat.style.transition = "opacity 0.3s ease";
+  }
+});
+observer.observe(document.body, { childList: true, subtree: true, attributes: true, attributeFilter: ["class"] });
